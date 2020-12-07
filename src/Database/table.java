@@ -24,7 +24,7 @@ public class table {
 
     public table() {
         // skapat färge på kantena av logga
-        Border backogg_jpanel_border = BorderFactory.createMatteBorder(0, 2, 2, 2, Color.black);
+        Border backogg_jpanel_border = BorderFactory.createMatteBorder(0, 2, 2, 3, Color.black);
          backlogg_jpanel.setBorder(backogg_jpanel_border);
 
         loga.addActionListener(new ActionListener() {
