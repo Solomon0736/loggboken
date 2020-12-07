@@ -31,6 +31,7 @@ public class table {
             public void actionPerformed(ActionEvent actionEvent) {
             String sql ="select * from table where username=? and password1=?";
                 try {
+                    Statement stmt = conn.createStatement();
                     Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookshop? " +
                             "allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC", "solomon", password);
                     PreparedStatement pstmt = conn.prepareStatement(sql);
