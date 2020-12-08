@@ -2,10 +2,9 @@ package Database;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.sql.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -29,23 +28,37 @@ public class table {
 
         loga.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
-            String sql ="select * from table where username=? and password1=?";
                 try {
-                    Statement stmt = conn.createStatement();
-                    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookshop? " +
-                            "allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC", "solomon", password);
-                    PreparedStatement pstmt = conn.prepareStatement(sql);
-                    pstmt.setString(1, new String(användernamn.getText()));
-                    pstmt.setString(2, new String(password1.getPassword()));
-                    // Set up connection to database
-                } catch (SQLException e) {
 
+                    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/te18? " +
+                            "allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC", "solomon", password);
+                    Statement stmt = conn.createStatement();
+
+                    String SQLQuery ="select * from story";
+                    ResultSet rset = stmt.executeQuery(SQLQuery);
+
+                    // Loop through the result set and print
+                    // Need to know the table-structure
+                    while (rset.next()) {
+                        System.out.println(
+                                rset.getInt("id") + ", " +
+                                        rset.getString("body") + " : " +
+                                        rset.getString("datum") + " : " +
+                                        rset.getString("user"));
+                    }
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
                 }
+                   // PreparedStatement pstmt = conn.prepareStatement(sql);
+                    //pstmt.setString(1, new String(användernamn.getText()));
+                   // pstmt.setString(2, new String(password1.getPassword()));
+                    // Set up connection to database
+               // } catch (SQLException e) {
                 }
             });
     }
 
-    public JLabel getLoggain() {
+   /* public JLabel getLoggain() {
         return loggain;
     }
 
@@ -123,7 +136,7 @@ public class table {
     public void setLösenord(JLabel lösenord) {
         this.lösenord = lösenord;
     }
-
+*/
     public static void main(String[] args) {
         JFrame frame = new JFrame("table");
         frame.setContentPane(new table().huvud);
