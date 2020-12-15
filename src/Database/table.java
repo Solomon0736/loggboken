@@ -1,4 +1,6 @@
 package Database;
+import sun.plugin2.message.Message;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
@@ -8,7 +10,7 @@ import java.sql.DriverManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class table {
+public class table extends medelandet {
     private JPanel tabl;
     private JPanel huvud;
     private JLabel loggain;
@@ -22,126 +24,56 @@ public class table {
     String password= "password";
 
     public table() {
+
         // skapat färge på kantena av logga
         Border backogg_jpanel_border = BorderFactory.createMatteBorder(0, 2, 2, 3, Color.black);
          backlogg_jpanel.setBorder(backogg_jpanel_border);
 
         loga.addActionListener(new ActionListener() {
+            private String name;
+
             public void actionPerformed(ActionEvent actionEvent) {
                 try {
+                    //out.println(view.getText() + " " + view.getUsername());
+                    //out.flush();
+                    //System.out.println(view.getText() + " " + view.getUsername());
 
                     Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/te18? " +
                             "allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC", "solomon", password);
                     Statement stmt = conn.createStatement();
 
-                    String SQLQuery ="select * from story";
+                    String SQLQuery ="select name,password from link ";
                     ResultSet rset = stmt.executeQuery(SQLQuery);
 
                     // Loop through the result set and print
                     // Need to know the table-structure
                     while (rset.next()) {
                         System.out.println(
-                                rset.getInt("id") + ", " +
-                                        rset.getString("body") + " : " +
-                                        rset.getString("datum") + " : " +
-                                        rset.getString("user"));
+                                        rset.getString("name") + " : " +
+                                         rset.getString("password") + " : " );
+
                     }
+                    if (name == "solomon") {
+                        System.out.println(användernamn.getText() + " " + password1.getText());
+                        medelandet M =new medelandet();
+
+                    }
+
+
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
-                   // PreparedStatement pstmt = conn.prepareStatement(sql);
-                    //pstmt.setString(1, new String(användernamn.getText()));
-                   // pstmt.setString(2, new String(password1.getPassword()));
-                    // Set up connection to database
-               // } catch (SQLException e) {
+
                 }
             });
+        
     }
-
-   /* public JLabel getLoggain() {
-        return loggain;
-    }
-
-    public void setLoggain(JLabel loggain) {
-        this.loggain = loggain;
-    }
-
-    public JButton getLoga() {
-        return loga;
-    }
-
-    public void setLoga(JButton loga) {
-        this.loga = loga;
-    }
-
-    public JPanel getTabl() {
-        return tabl;
-    }
-
-    public void setTabl(JPanel tabl) {
-        this.tabl = tabl;
-    }
-
-    public JPanel getHuvud() {
-        return huvud;
-    }
-
-    public void setHuvud(JPanel huvud) {
-        this.huvud = huvud;
-    }
-
-    public JPanel getBacklogg_jpanel() {
-        return backlogg_jpanel;
-    }
-
-    public void setBacklogg_jpanel(JPanel backlogg_jpanel) {
-        this.backlogg_jpanel = backlogg_jpanel;
-    }
-
-    public JTextField getAnvändernamn() {
-        return användernamn;
-    }
-
-    public void setAnvändernamn(JTextField användernamn) {
-        this.användernamn = användernamn;
-    }
-
-    public JPasswordField getPassword1() {
-        return password1;
-    }
-
-    public void setPassword1(JPasswordField password1) {
-        this.password1 = password1;
-    }
-    public JButton getClearButton() {
-        return clearButton;
-    }
-
-    public void setClearButton(JButton clearButton) {
-        this.clearButton = clearButton;
-    }
-
-    public JLabel getUsername() {
-        return username;
-    }
-
-    public void setUsername(JLabel username) {
-        this.username = username;
-    }
-
-    public JLabel getLösenord() {
-        return lösenord;
-    }
-
-    public void setLösenord(JLabel lösenord) {
-        this.lösenord = lösenord;
-    }
-*/
     public static void main(String[] args) {
         JFrame frame = new JFrame("table");
         frame.setContentPane(new table().huvud);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
-    }
+
+        }
 }
