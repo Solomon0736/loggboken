@@ -2,11 +2,16 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class model {
+public class Model {
     private ArrayList<Entry> entries;
+
+    public Model() {
+        this.entries = new ArrayList<>();
+    }
 
     public Entry createEntry(String body, String user) {
         Entry entry = new Entry(body,user);
         this.entries.add(entry);
         return entry;
+
     }}

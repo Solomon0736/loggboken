@@ -5,18 +5,44 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
 
-public class medelandet {
+public class View {
     private JTextField userText;
+
+    public String getUserText() {
+        return userText.getText();
+    }
+
+    public void setUserText(JTextField userText) {
+        this.userText = userText;
+    }
+
+    public String getBodyText() {
+        return bodyText.getText();
+    }
+
+    public void setBodyText(JTextField bodyText) {
+        this.bodyText = bodyText;
+    }
+
+    public String getDatumText() {
+        return datumText.getText();
+    }
+
+    public void setDatumText(JTextField datumText) {
+        this.datumText = datumText;
+    }
+
     private JTextField bodyText;
     private JTextField datumText;
     private JPanel baksida;
     private JTextArea Messages;
     private JButton spara;
+    private JButton sparafil;
     String password = "password";
 
 
 
-    public medelandet() {
+    public View() {
         JFrame frame = new JFrame("table");
         frame.setContentPane(baksida);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -48,7 +74,8 @@ public class medelandet {
 
             }
         });
-
     }
-
+    public void addSparaListener(ActionListener actionListener) {
+        spara.addActionListener(actionListener);
+    }
 }

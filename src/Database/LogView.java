@@ -8,9 +8,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import Database.medelandet;
 
-public class table {
+public class LogView {
     private JPanel tabl;
     private JPanel huvud;
     private JLabel loggain;
@@ -25,7 +24,7 @@ public class table {
     private String name;
     private boolean visible;
 
-    public table() {
+    public LogView() {
         JFrame frame = new JFrame("table");
         frame.setContentPane(this.huvud);
         frame.setTitle(" loggboken projekt");
@@ -52,7 +51,7 @@ public class table {
 
                    while (rset.next()) {
                         if (username.equals(rset.getString("name" ))&& lösenord.equals(rset.getString("password"))){
-                            medelandet M = new medelandet();
+                            View M = new View();
                             frame.dispose();
                             break;
                         }
