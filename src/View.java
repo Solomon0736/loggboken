@@ -1,9 +1,9 @@
-package Database;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
+import java.util.ArrayList;
 
 public class View {
     private JTextField userText;
@@ -38,13 +38,13 @@ public class View {
     private JTextArea Messages;
     private JButton spara;
     private JButton sparafil;
+    private JButton open;
     String password = "password";
-
 
 
     public View() {
         JFrame frame = new JFrame("table");
-        frame.setContentPane(baksida);
+        frame.setContentPane(this.baksida);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
@@ -67,15 +67,24 @@ public class View {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+    }
 
-        spara.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent actionEvent) {
+    public void appdatelist( ArrayList<Entry> entries){
+        Messages.setText("");
 
-
-            }
-        });
+       for (Entry entry : entries){
+           Messages.append(entry.getBody()+","+ entry.getUser());
+       }
     }
     public void addSparaListener(ActionListener actionListener) {
         spara.addActionListener(actionListener);
+    }
+
+    public void addSparafilListener(ActionListener actionListener) {
+        sparafil.addActionListener(actionListener);
+    }
+
+    public void addOpenListener(ActionListener actionListener) {
+        open.addActionListener(actionListener);
     }
 }

@@ -1,4 +1,3 @@
-package Database;
 
 import javax.swing.*;
 import javax.swing.border.Border;
