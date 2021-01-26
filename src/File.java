@@ -1,5 +1,8 @@
 import java.io.*;
 
+/**
+ *
+ */
 public class File {
     public static void save(Model model, String fileName) throws IOException {
         try (ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(fileName)))) {

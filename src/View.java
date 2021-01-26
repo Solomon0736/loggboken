@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class View {
+public class View  {
     private JTextField userText;
 
     public String getUserText() {
@@ -73,7 +73,7 @@ public class View {
         Messages.setText("");
 
        for (Entry entry : entries){
-           Messages.append(entry.getBody()+","+ entry.getUser());
+           Messages.append(entry.getBody()+ "     "+ entry.datum +"     "+ entry.getUser());
        }
     }
     public void addSparaListener(ActionListener actionListener) {
@@ -86,5 +86,9 @@ public class View {
 
     public void addOpenListener(ActionListener actionListener) {
         open.addActionListener(actionListener);
+    }
+
+    public String getdatumText() {
+        return null;
     }
 }
