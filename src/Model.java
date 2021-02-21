@@ -10,13 +10,9 @@ import java.util.Arrays;
 public class Model implements Serializable {
     private ArrayList<Entry> entries;
 
-    public ArrayList<Entry> getEntries() {
-        return entries;
-    }
+    public ArrayList<Entry> getEntries() { return entries; }
 // skapat constructor till Modelen och i den arreylisten sparar entries
-    public Model() {
-        this.entries = new ArrayList<>();
-    }
+    public Model() { this.entries = new ArrayList<>(); }
 
 
     /**
@@ -26,8 +22,8 @@ public class Model implements Serializable {
      * @param datum den är datum som finns entry.
      * @return  skapa entry
      */
-    public Entry createEntry(String body, String user,String datum) {
-        Entry entry = new Entry(body,user,datum);
+    public Entry createEntry(String body, String user,String datum,String id) {
+        Entry entry = new Entry(body,user,datum,id);
         this.entries.add(entry);
         return entry;
 

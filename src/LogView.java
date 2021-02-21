@@ -16,7 +16,7 @@ public class LogView  {
     private JPasswordField password1;
     private JButton clearButton;
     private JLabel username;
-    private JLabel lösenord;
+    private JLabel losenord;
     private JButton loga;
     String password = "password";
     private String name;
@@ -30,43 +30,46 @@ public class LogView  {
         frame.pack();
         frame.setSize(400, 300);
         frame.setVisible(true);
+
         // skapat färge på kantena av logga
         Border backogg_jpanel_border = BorderFactory.createMatteBorder(0, 2, 2, 3, Color.black);
         backlogg_jpanel.setBorder(backogg_jpanel_border);
         loga.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
+
 /**
  * Här connectar jag databasen med intelija
  * Jag har gjort name och password i link databassen
  */
                 try {
+
                     Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/te18? " +
                             "allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC", "solomon", password);
                     Statement stmt = conn.createStatement();
-                    String SQLQuery = "select name,password from link ";
+                    String SQLQuery = "select name,password from users ";
                     ResultSet rset = stmt.executeQuery(SQLQuery);
 
                     String username = användernamn.getText();
-                    String lösenord = password1.getText();
+                    String losenord = password1.getText();
+
 /**
  *  Jag har select name och password från link databssen ska bli samma som användernamn och password1
  *  så att den ska man kan logga in annars man får inte komma in.
- *  Om man k
  *
  */
                    while (rset.next()) {
-                        if (username.equals(rset.getString("name" ))&& lösenord.equals(rset.getString("password"))){
-
+                        if (username.equals(rset.getString("name" ))&& losenord.equals(rset.getString("password"))){
                             frame.dispose();
-                            View M = new View();
                             break;
                         }
 
                     }
 
+
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
+
             }
         });
                 // den tabbort allt som finns i anänder och password

@@ -1,6 +1,5 @@
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
 import java.util.ArrayList;
@@ -31,19 +30,24 @@ public class View  {
     public void setDatumText(JTextField datumText) {
         this.datumText = datumText;
     }
+    public String getIdText() { return idText.getText(); }
+
+    public void setIdText(JTextField idText) { this.idText = idText; }
 
     private JTextField bodyText;
+    //private JTextField idText;
     private JTextField datumText;
     private JPanel baksida;
     private JTextArea Messages;
     private JButton spara;
     private JButton sparafil;
     private JButton open;
+    private JTextField idText;
     String password = "password";
 
 
     public View() {
-        JFrame frame = new JFrame("table");
+       JFrame frame = new JFrame("table");
         frame.setContentPane(this.baksida);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
@@ -58,10 +62,11 @@ public class View  {
 
             while (rset.next()) {
                 Messages.append(
-                        rset.getInt("id") + ", " +
+                       rset.getString("id") + ", " +
                                 rset.getString("user") + " :  " +
                                 rset.getString("datum") + " :  " +
                                 rset.getString("body") + " \n ");
+
 
             }
         } catch (SQLException ex) {
@@ -73,7 +78,7 @@ public class View  {
         Messages.setText("");
 
        for (Entry entry : entries){
-           Messages.append(entry.getBody()+ "     "+ entry.datum +"     "+ entry.getUser());
+           Messages.append(entry.getBody()+ "     "+   entry.id+"    "+ entry.datum +"     "+ entry.getUser());
        }
     }
     public void addSparaListener(ActionListener actionListener) {

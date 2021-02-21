@@ -31,14 +31,14 @@
               <text value="Username"/>
             </properties>
           </component>
-          <component id="6b14b" class="javax.swing.JLabel" binding="lösenord">
+          <component id="6b14b" class="javax.swing.JLabel" binding="losenord">
             <constraints>
               <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <background color="-3023298"/>
               <font name="Droid Sans Mono Dotted" size="18" style="1"/>
-              <text value="Lösenord"/>
+              <text value="Losenord"/>
             </properties>
           </component>
           <vspacer id="5ea2c">

@@ -5,9 +5,10 @@ public class Entry implements Serializable {
     String body;
     String user;
    String datum;
+   String id;
 
     /**
-     *
+     *Jag har returnad body,datum och user för att få tillbaka resultat
      * @return den
      */
     public String getBody() {
@@ -22,13 +23,13 @@ public class Entry implements Serializable {
         return user;
     }
 
+   public String getId() { return id; }
 
-    public Entry(String body, String user,String datum) {
+    public Entry(String s, String body, String user, String datum) {
         this.body = body;
         this.user = user;
         this.datum=datum;
-
-
+        this.id= id;
     }
 
 }
